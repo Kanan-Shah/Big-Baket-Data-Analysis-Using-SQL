@@ -8,8 +8,8 @@ Q2. Which product categories offer the highest discounts on average, and which b
 Q3. Is there any correlation between the sale price and the rating of a product? Are higher-priced products generally rated higher?
     --Write a query that compares the sale price and ratings for products, possibly grouped by price range, to analyze if there's any trend.
 
-Q4. What are the top-selling brands in terms of revenue (sale price * number of units sold)?
-    --> If data on quantity sold is available, calculate total revenue per brand and list the top-selling brands.
+Q4. What are the top-selling brands in terms of rating?
+    --> List the products and brands with highest ratings.
 
 Q5.  Which subcategories have the most expensive products? What are the differences in discounts offered across subcategories?
      -->Aggregate products by subcategory, calculate the average sale price, market price, and discount percentage for each subcategory.
