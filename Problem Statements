@@ -8,8 +8,8 @@ Q2. Which product categories offer the highest discounts on average, and which b
 Q3. Is there any correlation between the sale price and the rating of a product? Are higher-priced products generally rated higher?
     --Write a query that compares the sale price and ratings for products, possibly grouped by price range, to analyze if there's any trend.
 
-Q4. What are the top-selling brands in terms of rating?
-    --> List the products and brands with highest ratings.
+Q4. What are the top-selling brands in terms of revenue?
+    -->  Identify the top-selling brands and calculate their total revenue based on sale prices..
 
 Q5.  Which subcategories have the most expensive products? What are the differences in discounts offered across subcategories?
      -->Aggregate products by subcategory, calculate the average sale price, market price, and discount percentage for each subcategory.
@@ -17,11 +17,11 @@ Q5.  Which subcategories have the most expensive products? What are the differen
 Q6. Which products have the highest percentage of discount compared to their market price?
     -->Create a query that ranks products based on the highest discount percentage, showing product names, discount, and sale prices.
 
-Q7. How do the market and sale prices of a product change over time? Do products get discounted more frequently during certain seasons?
-    -->If temporal data (like timestamps) is available, track price changes for specific products over time and analyze patterns in pricing adjustments.
+Q7. How do the  sale prices of a product and rating depend? 
+    -->Study whether products with higher ratings tend to be priced higher
 
-Q8. Do products with higher ratings tend to have higher sale prices? Is there a trend where higher-rated products are priced higher?
-    -->Analyze the relationship between product ratings and their sale price using aggregation or statistical methods in SQL.
+Q8. Discount and rating correlation
+    -->Investigate the relationship between discount percentages and product ratings.
 
 Q9. Can we segment products into groups based on consumer ratings and the price range?
     -->Use SQL queries to segment products by rating ranges and price brackets, and analyze how each segment performs in terms of sales.
