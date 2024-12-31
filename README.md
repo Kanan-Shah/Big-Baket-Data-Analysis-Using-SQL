@@ -42,4 +42,19 @@ The dataset contains the following columns:
 9.rating: The average rating provided by consumers.
 
 10.description: Detailed description of the product.
+
 [DATASET LINK](https://www.kaggle.com/datasets/surajjha101/bigbasket-entire-product-list-28k-datapoints)
+
+## Key Features of the Project
+
+**Data Exploration:** Understanding the relationships between various product attributes such as pricing, ratings, discounts, and categories.
+
+**SQL Queries:** Writing complex SQL queries to analyze the data, extract insights, and perform aggregations, filtering, and sorting.
+
+**Discount Analysis:** Creating a new feature (discount percentage) to understand how much consumers are saving on each product.
+
+**Category and Brand Performance:** Analyzing how products in different categories and brands perform based on ratings, pricing, and discounts.
+
+**Rating and Price Correlation:** Studying the relationship between product prices and their ratings to determine if higher-priced products tend to have better ratings.
+
+**Market Insights:** Drawing conclusions that can help businesses optimize pricing strategies and marketing efforts.
