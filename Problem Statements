@@ -1,0 +1,45 @@
+# Problem statements on the basis of the data set is analysed
+Q1. Which products have the highest ratings and how do their sale prices compare to the market price?
+    -->Write a query to find the top 10 products with the highest average rating, along with their sale price, market price, and discount percentage.
+
+Q2. Which product categories offer the highest discounts on average, and which brands are contributing to these discounts?
+    --> Use aggregation functions to calculate the average discount percentage by category and brand, and identify the categories with the highest discounts.
+
+Q3. Is there any correlation between the sale price and the rating of a product? Are higher-priced products generally rated higher?
+    --Write a query that compares the sale price and ratings for products, possibly grouped by price range, to analyze if there's any trend.
+
+Q4. What are the top-selling brands in terms of revenue (sale price * number of units sold)?
+    --> If data on quantity sold is available, calculate total revenue per brand and list the top-selling brands.
+
+Q5.  Which subcategories have the most expensive products? What are the differences in discounts offered across subcategories?
+     -->Aggregate products by subcategory, calculate the average sale price, market price, and discount percentage for each subcategory.
+
+Q6. Which products have the highest percentage of discount compared to their market price?
+    -->Create a query that ranks products based on the highest discount percentage, showing product names, discount, and sale prices.
+
+Q7. How do the market and sale prices of a product change over time? Do products get discounted more frequently during certain seasons?
+    -->If temporal data (like timestamps) is available, track price changes for specific products over time and analyze patterns in pricing adjustments.
+
+Q8. Do products with higher ratings tend to have higher sale prices? Is there a trend where higher-rated products are priced higher?
+    -->Analyze the relationship between product ratings and their sale price using aggregation or statistical methods in SQL.
+
+Q9. Can we segment products into groups based on consumer ratings and the price range?
+    -->Use SQL queries to segment products by rating ranges and price brackets, and analyze how each segment performs in terms of sales.
+
+Q10. Which products are likely to be in high demand based on their ratings and pricing strategies?
+     -->Combine product ratings, pricing, and discount data to create a formula or model that ranks products based on their potential demand.
+
+Q11. Which brand offers the best value for money based on the difference between market price and sale price, factoring in customer ratings?
+     -->Calculate the difference between sale price and market price for each product, group by brand, and also include average ratings to evaluate the brand’s overall value.
+
+Q12. Does a longer product description correlate with better sales or higher ratings?
+     -->Analyze the length of product descriptions and correlate it with sale price, ratings, or discount percentage, if applicable.
+
+Q13. Is there a trend where products with higher discounts tend to have higher ratings? Or do customers prefer products with smaller discounts?
+     -->Analyze how discount percentage and product ratings are related by writing a query that aggregates both fields.
+
+Q14. How do ratings and prices distribute across different price ranges? Do products in higher price ranges tend to have lower ratings?
+     -->Create price brackets and analyze the distribution of ratings across these price brackets to see if higher-priced products tend to have lower ratings.
+
+Q15. Which categories have the highest average ratings, and which have the most variation in ratings?
+     -->Use aggregation to calculate average ratings and rating variability for each category to identify which categories perform best and which have a wider range of opinions.
