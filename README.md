@@ -59,3 +59,254 @@ The dataset contains the following columns:
 ## Conclusion
 In this project, we analyzed the Big Basket dataset using SQL to gain insights into the e-commerce product landscape. 
 By performing various data analysis tasks, we were able to uncover several key trends and patterns that can influence business strategies, pricing models, and marketing efforts.
+
+
+## Schema
+
+```sql
+CREATE TABLE BIGBASKET(
+     index INT,
+	 product VARCHAR(255),
+	 category VARCHAR(255),
+	 sub_category VARCHAR(255),
+	 brand VARCHAR(255),
+	 sale_price FLOAT,
+	 market_price FLOAT,
+	 type VARCHAR(255),
+	 rating FLOAT,
+	 description VARCHAR(5000)
+);
+```
+
+## Problems and Solutions
+
+### 1. TOP PRODUCTS BASED ON RATING AND SALES
+
+```sql
+SELECT 
+    product,
+	sale_price,
+	market_price,
+	rating,
+	(market_price-sale_price)/(market_price) * 100 as discount_percentage
+FROM BIGBASKET
+WHERE rating IS NOT NULL
+ORDER BY rating DESC
+LIMIT 10;
+```
+
+
+
+### 2. Category-Wise Discount Analysis
+
+```sql
+SELECT 
+    category,
+	brand,
+	AVG((market_price-sale_price)/(market_price) *100) as avg_discount_percentage
+FROM BIGBASKET
+GROUP BY category ,brand
+ORDER BY avg_discount_percentage DESC;
+```
+
+
+
+### 3. Price vs Rating Correlation
+
+```sql
+SELECT 
+	sale_price,
+	rating
+FROM BIGBASKET
+WHERE rating IS NOT NULL AND sale_price IS NOT NULL
+ORDER BY sale_price;
+```
+
+
+
+### 4. Top Selling Brands and Products
+
+```sql
+SELECT
+     brand,
+     COUNT(product) AS total_products_sold,
+	 SUM(sale_price) AS total_revenue
+FROM BIGBASKET
+WHERE product IS NOT NULL AND brand IS NOT NULL AND rating IS NOT NULL
+GROUP BY brand
+ORDER BY total_revenue DESC;
+```
+
+
+
+### 5. Sub-Category Wise Performance
+
+```sql
+SELECT
+    product,
+	sub_category,
+	AVG(sale_price) AS avg_revenue , 
+	AVG(market_price) AS avg_market_price,
+	AVG((market_price-sale_price)/(market_price)*100) AS avg_discount_percentage
+FROM BIGBASKET
+WHERE product IS NOT NULL AND sub_category IS NOT NULL AND sale_price IS NOT NULL AND market_price IS NOT NULL 
+GROUP BY product,sub_category
+ORDER BY avg_discount_percentage DESC;
+```
+
+
+
+### 6. Most Discounted Products
+
+```sql
+SELECT 
+   product,
+   sale_price,
+   (market_price-sale_price)/(market_price)*100 AS highest_discount_percentage
+FROM BIGBASKET
+ORDER BY highest_discount_percentage DESC;
+```
+
+
+
+### 7. Impact of Ratings on Sale Price
+
+```sql
+SELECT 
+    product , rating , sale_price
+FROM BIGBASKET
+WHERE product IS NOT NULL AND rating IS NOT NULL AND sale_price IS NOT NULL AND rating >=4.5
+--ORDER BY rating DESC
+ORDER BY sale_price DESC;
+```
+
+
+
+### 8. Discount and Rating Correlation
+
+```sql
+SELECT
+    rating,
+	(market_price-sale_price)/(market_price) *100 AS discount_percentages
+FROM BIGBASKET
+WHERE rating IS NOT NULL
+ORDER BY rating DESC , discount_percentages DESC;
+```
+
+
+
+### 9. Customer Segmentation Based on Product Preferences
+
+```sql
+SELECT 
+     product , rating , MAX(sale_price) as maximum_saleprice
+FROM BIGBASKET
+WHERE rating IS NOT NULL
+GROUP BY product , rating
+ORDER BY rating DESC , maximum_saleprice DESC;
+```
+
+
+### 10.Product Demand Insights
+
+```sql
+SELECT product , rating
+FROM BIGBASKET 
+WHERE rating IS NOT NULL
+ORDER BY rating DESC
+LIMIT 10;
+```
+
+
+
+### 11. Brand Performance Comparison
+
+```sql
+SELECT 
+    brand,
+	MIN(market_price - sale_price) AS value_for_money,
+	rating
+FROM BIGBASKET
+WHERE rating IS NOT NULL
+GROUP BY brand , rating 
+ORDER BY value_for_money DESC;
+```
+
+
+
+### 12. Impact of Description Length on Sales
+
+```sql
+SELECT 
+    LENGTH(description) as length_of_description, 
+	rating,
+	product,
+	(market_price - sale_price)/(market_price)*100 AS discount_percent
+FROM BIGBASKET
+WHERE LENGTH(description) IS NOT NULL AND rating IS NOT NULL
+ORDER BY length_of_description DESC;
+```
+
+
+
+### 13. Discount and Rating Correlation
+
+```sql
+SELECT 
+    (market_price - sale_price) / market_price * 100 AS discount_percentage,
+    AVG(rating) AS avg_rating,
+    COUNT(*) AS product_count
+FROM BIGBASKET
+WHERE rating IS NOT NULL AND market_price > 0
+GROUP BY discount_percentage
+ORDER BY discount_percentage DESC;
+```
+
+
+
+### 14. Price Range and Rating Distribution
+
+```sql
+SELECT 
+    price_bracket,
+    AVG(rating) AS avg_rating,
+    COUNT(*) AS product_count,
+    MIN(rating) AS min_rating,
+    MAX(rating) AS max_rating
+FROM (
+    SELECT 
+        CASE 
+            WHEN sale_price < 100 THEN 'Under 100'
+            WHEN sale_price BETWEEN 100 AND 500 THEN '100-500'
+            WHEN sale_price BETWEEN 500 AND 1000 THEN '500-1000'
+            WHEN sale_price > 1000 THEN 'Above 1000'
+        END AS price_bracket,
+        rating
+    FROM BIGBASKET
+    WHERE sale_price > 0 AND rating IS NOT NULL
+) AS price_brackets
+GROUP BY price_bracket
+ORDER BY 
+    CASE 
+        WHEN price_bracket = 'Under 100' THEN 1
+        WHEN price_bracket = '100-500' THEN 2
+        WHEN price_bracket = '500-1000' THEN 3
+        WHEN price_bracket = 'Above 1000' THEN 4
+    END;
+```
+
+
+
+### 15. Category-Wise Rating Analysis
+
+```sql
+SELECT 
+    category,
+    AVG(rating) AS avg_rating,
+    STDDEV(rating) AS rating_variability,
+    COUNT(*) AS product_count
+FROM BIGBASKET
+WHERE rating IS NOT NULL
+GROUP BY category
+ORDER BY avg_rating DESC, rating_variability DESC;
+```
