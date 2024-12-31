@@ -56,3 +56,6 @@ The dataset contains the following columns:
 **Rating and Price Correlation:** Studying the relationship between product prices and their ratings to determine if higher-priced products tend to have better ratings.
 
 **Market Insights:** Drawing conclusions that can help businesses optimize pricing strategies and marketing efforts.
+## Conclusion
+In this project, we analyzed the Big Basket dataset using SQL to gain insights into the e-commerce product landscape. 
+By performing various data analysis tasks, we were able to uncover several key trends and patterns that can influence business strategies, pricing models, and marketing efforts.
